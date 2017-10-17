@@ -11,6 +11,7 @@ import {MoonComponent} from './components/moon/moon.component';
 import {PlanetComponent} from './components/planet/planet.component';
 import {StarComponent} from './components/star/star.component';
 import {RocketGameComponent} from './containers/rocket-game.component';
+import {ScoreBoardComponent} from "./components/score-board/score-board.component";
 
 
 export const ROUTES: Routes = [
@@ -29,7 +30,8 @@ export const ROUTES: Routes = [
         StarComponent,
         PlanetComponent,
         MoonComponent,
-        ShotComponent
+        ShotComponent,
+        ScoreBoardComponent
     ],
     entryComponents: [
         StarComponent,

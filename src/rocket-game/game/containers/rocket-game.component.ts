@@ -22,11 +22,10 @@ import { ShotComponent } from "../components/shot/shot.component";
     styleUrls: ['./rocket-game.component.scss'],
     template: `        
         <div class="container">
-            <!--<div class="test" style="position: absolute; color: #fff;" [style.left]="backgroundPosition + 'px'">a</div>-->
+            <game-score-board [score]="score"></game-score-board>
             <div #container></div>
             <div #fire></div>
-            <div class="rocket" [style.top]="position.y + '%'" [style.left]="position.x + '%'">
-                
+            <div class="rocket" [style.top]="position.y + '%'" [style.left]="position.x + '%'">  
                 <div class="rocket-body">
                     <div class="body"></div>
                     <div class="fin fin-left"></div>
@@ -47,6 +46,11 @@ export class RocketGameComponent implements OnInit, AfterContentInit {
     // starCount = Array(10).fill(4);
     backgroundPosition: number = 0;
     shotCount = 0;
+    hitCount = 0;
+    score: any = {
+        shot: 0,
+        hit: 0
+    };
     windowWidth: any;
     windowHeight: any;
     stars: any = [];
@@ -83,6 +87,7 @@ export class RocketGameComponent implements OnInit, AfterContentInit {
         const comp = this.container.createComponent(moonComp);
         this.moons[id] = comp;
         comp.instance.submitted.subscribe(hit => {
+            this.score.hit += 1;
             comp.destroy();
             delete this.moons[id];
         });
@@ -102,7 +107,11 @@ export class RocketGameComponent implements OnInit, AfterContentInit {
         this.fires[id] = this.fire.createComponent(fireComp);
         this.fires[id].instance.position = this.position;
         this.fires[id].instance.moons = this.moons;
-        this.fires[id].instance.remove.subscribe(hit => this.fires[id].destroy());
+        this.fires[id].instance.remove.subscribe(hit => {
+            this.fires[id].destroy()
+        });
+
+
     }
 
     checkHit(shotPosition) {
@@ -121,19 +130,19 @@ export class RocketGameComponent implements OnInit, AfterContentInit {
 
         const leftArrow$ = Observable.fromEvent(document, 'keydown')
             .filter(event =>  event['key'] === 'ArrowLeft' )
-            .mapTo(position => this.decrement(position, 'x', 2));
+            .mapTo(position => this.decrement(position, 'x', 1));
 
         const rightArrow$ = Observable.fromEvent(document, 'keydown')
             .filter(event => event['key'] === 'ArrowRight')
-            .mapTo(position => this.increment(position, 'x', 2));
+            .mapTo(position => this.increment(position, 'x', 1));
 
         const downArrow$ = Observable.fromEvent(document, 'keydown')
             .filter(event => event['key'] === 'ArrowDown')
-            .mapTo(position => this.increment(position, 'y', 2));
+            .mapTo(position => this.increment(position, 'y', 1));
 
         const upArrow$ = Observable.fromEvent(document, 'keydown')
             .filter(event => event['key'] === 'ArrowUp')
-            .mapTo(position => this.decrement(position, 'y', 2));
+            .mapTo(position => this.decrement(position, 'y', 1));
 
         const spaceShot$ = Observable.fromEvent(document, 'keydown')
             .filter(event => event['key'] === ' ');
@@ -141,7 +150,7 @@ export class RocketGameComponent implements OnInit, AfterContentInit {
         Observable.merge(spaceShot$)
             .subscribe(
                 shot => {
-                    this.createShot(this.shotCount += 1)
+                    this.createShot(this.score.shot += 1)
                 }
             );
 

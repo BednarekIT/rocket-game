@@ -32,7 +32,7 @@ export class MoonComponent implements OnInit, OnChanges {
 
     ngOnInit() {
 
-        this.tx = TweenMax.to(this.moon.nativeElement, 10, {top: '110%', delay: this.getRandomArbitrary(0, 3), repeat: -1, onUpdate: () =>
+        this.tx = TweenMax.to(this.moon.nativeElement, 20, {top: '110%', delay: this.getRandomArbitrary(0, 3), repeat: -1, onUpdate: () =>
         {
             this.checkShot();
             this.y.emit({top: this.moon.nativeElement.style.top, left: this.moon.nativeElement.style.left});
