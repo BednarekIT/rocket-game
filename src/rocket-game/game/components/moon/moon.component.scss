@@ -1,0 +1,47 @@
+
+.moon{
+  position:absolute;
+  animation: bounce 0.8s infinite;
+  width:40px;
+  height:40px;
+  top:52%;
+  left:20%;
+  background:#9e9e9e;
+  border-radius:50%;
+  z-index:3;
+  box-shadow: inset -7px -7px 0 rgba(0,0,0,.2);
+  &.hit {
+    background: linear-gradient(to top, transparent 8%, #9e9e9e 100%);
+    animation: spin 2s infinite;
+  }
+}
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+.crater1,.crater2,.crater3,.crater4{
+  position: absolute;
+  border-radius:50%;
+  background: rgba(0,0,0,.15);
+  box-shadow: inset 3px 3px 0 rgba(0,0,0,.15);
+}
+
+.crater2{
+  width:10px;
+  height:10px;
+  left:50%;
+  top:60%;
+}
+.crater3{
+  width:15px;
+  height:15px;
+  left:30%;
+  top:65%;
+}
+.crater2.moon_crater{
+  top:20%;
+}
+.crater3.moon_crater{
+  top:50%;
+  left:10%;
+  width:7px;
+  height:7px;
+}
+

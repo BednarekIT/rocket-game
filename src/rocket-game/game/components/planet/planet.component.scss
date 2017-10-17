@@ -1,0 +1,64 @@
+.planet{
+  animation: bounce 0.5s infinite;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:#ff5f40;
+  position: absolute;
+  left:50%;
+  top:50%;
+  margin: -75px 0 0 -75px;
+  overflow: hidden;
+  z-index: 2;
+}
+.planet_shadow{
+  position: absolute;
+  border-radius: 50%;
+  height: 150%;
+  width: 150%;
+  top: -35%;
+  right: -10%;
+  border: 35px solid rgba(0,0,0,.15);
+}
+.crater1,.crater2,.crater3,.crater4{
+  position: absolute;
+  border-radius:50%;
+  background: rgba(0,0,0,.15);
+  box-shadow: inset 3px 3px 0 rgba(0,0,0,.15);
+}
+.crater1{
+  width:20px;
+  height:20px;
+  left:25%;
+  top:20%;
+}
+.crater2{
+  width:10px;
+  height:10px;
+  left:50%;
+  top:60%;
+}
+.crater3{
+  width:15px;
+  height:15px;
+  left:30%;
+  top:65%;
+}
+.crater4{
+  width:15px;
+  height:15px;
+  left:60%;
+  top:35%;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate3d(0px, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0px, -4px, 0);
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0);
+  }
+}
