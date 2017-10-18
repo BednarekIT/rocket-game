@@ -10,7 +10,7 @@ import {AuthGuard} from "../auth/shared/guards/auth.guard";
 
 
 export const ROUTES: Routes = [
-    { path: 'rocket-game', /*canActivate: [AuthGuard], */ loadChildren: './game/game.module#GameModule' },
+    { path: 'rocket-game', canActivate: [AuthGuard], loadChildren: './game/game.module#GameModule' },
     { path: '**', redirectTo: 'rocket-game' }
 
 ];
