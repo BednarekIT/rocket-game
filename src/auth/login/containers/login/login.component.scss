@@ -1,0 +1,17 @@
+:host {
+  width: 100%;
+}
+
+.wrapper {
+  max-width: 800px;
+  width: 96%;
+  margin: 0 auto;
+  h1.title {
+    color: #dadada;
+    text-align: center;
+    font-size: 5em;
+    span {
+      color: #a75248;
+    }
+  }
+}

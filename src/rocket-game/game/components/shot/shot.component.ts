@@ -27,6 +27,10 @@ export class ShotComponent implements OnInit, AfterContentInit {
 
     ngOnInit() {
 
+        let audio = new Audio();
+        audio.src = "/assets/sounds/gun_shot.mp3";
+        audio.load();
+        audio.play();
 
         TweenMax.to(this.shot.nativeElement, 1, {
             top: "-25px", onUpdate: () => {

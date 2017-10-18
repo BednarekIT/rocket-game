@@ -4,12 +4,20 @@
   -moz-box-sizing: border-box;
 }
 
+app-root {
+  width: 100%;
+}
+
+:host {
+  width: 100%;
+}
+
 html, body {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
-  background: #fff;
+  background: #000;
   -webkit-font-smoothing: antialiased;
   font: 300 20px/1.4 -apple-system, 'VT323', monospace;
   color: #545e6f;
