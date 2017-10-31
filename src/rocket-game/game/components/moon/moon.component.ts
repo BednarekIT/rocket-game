@@ -10,7 +10,7 @@ import 'rxjs/add/operator/repeat';
     selector: 'game-moon',
     styleUrls: ['./moon.component.scss'],
     template: `
-        <div class="moon" #moon [class.hit]="hitCount >= 1" [style.top]="position.y + '%'" [style.left]="position.x + '%'">
+        <div class="moon" #target [class.hit]="hitCount >= 1" [style.top]="position.y + '%'" [style.left]="position.x + '%'">
             <div class="crater2 moon_crater"></div>
             <div class="crater3 moon_crater"></div>
         </div>
@@ -18,7 +18,7 @@ import 'rxjs/add/operator/repeat';
 })
 export class MoonComponent implements OnInit, OnChanges {
 
-    @ViewChild('moon') moon;
+    @ViewChild('target') target;
     @Output() submitted: EventEmitter<any> = new EventEmitter<any>();
     @Output() y: EventEmitter<any> = new EventEmitter<any>();
     position: any = {
@@ -32,10 +32,10 @@ export class MoonComponent implements OnInit, OnChanges {
 
     ngOnInit() {
 
-        this.tx = TweenMax.to(this.moon.nativeElement, 20, {top: '110%', delay: this.getRandomArbitrary(0, 3), repeat: -1, onUpdate: () =>
+        this.tx = TweenMax.to(this.target.nativeElement, this.getRandomArbitrary(10, 20), {top: '110%', delay: this.getRandomArbitrary(0, 3), repeat: -1, onUpdate: () =>
         {
             this.checkShot();
-            this.y.emit({top: this.moon.nativeElement.style.top, left: this.moon.nativeElement.style.left});
+            this.y.emit({top: this.target.nativeElement.style.top, left: this.target.nativeElement.style.left});
 
         }, onRepeat: () => {
             this.position.x = this.getRandomInt(2, 98);

@@ -24,6 +24,7 @@ export class ShotComponent implements OnInit, AfterContentInit {
     @Output() hit: EventEmitter<any> = new EventEmitter();
     @Input() position: any;
     @Input() moons: any;
+    @Input() targets: any;
 
     ngOnInit() {
 
@@ -34,11 +35,11 @@ export class ShotComponent implements OnInit, AfterContentInit {
 
         TweenMax.to(this.shot.nativeElement, 1, {
             top: "-25px", onUpdate: () => {
-                this.moons.filter(item => {
-                    const moonPos = item.instance.moon.nativeElement.getBoundingClientRect();
+                this.targets.filter(item => {
+                    const moonPos = item.instance.target.nativeElement.getBoundingClientRect();
                     const shotPos = this.shot.nativeElement.getBoundingClientRect();
                     if (moonPos.left <= shotPos.left && shotPos.right <= moonPos.right) {
-                        if (shotPos.top <= moonPos.bottom) {
+                        if (shotPos.top <= moonPos.bottom && shotPos.top >= moonPos.top) {
                             item.instance.hitCount += 1;
                             this.remove.emit();
                             return;

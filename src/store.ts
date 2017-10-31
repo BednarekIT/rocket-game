@@ -5,14 +5,17 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import { User } from './auth/shared/services/auth/auth.service';
+import {Game} from "./rocket-game/game/shared/service/game/game.service";
 
 export interface State {
     user: User,
+    games: Game,
     [key: string]: any
 }
 
 const state: State = {
     user: undefined,
+    games: undefined,
 };
 
 export class Store {

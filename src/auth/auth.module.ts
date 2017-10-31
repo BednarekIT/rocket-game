@@ -22,12 +22,7 @@ export const ROUTES: Routes = [
 ];
 
 export const firebaseConfig: FirebaseAppConfig = {
-    apiKey: "AIzaSyDRzZbudzeCPs7LauQ_u5Qye-iMpwE4-tc",
-    authDomain: "rocket-game-811d9.firebaseapp.com",
-    databaseURL: "https://rocket-game-811d9.firebaseio.com",
-    projectId: "rocket-game-811d9",
-    storageBucket: "rocket-game-811d9.appspot.com",
-    messagingSenderId: "628504841538"
+
 };
 
 @NgModule({
